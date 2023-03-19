@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap 5 Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="modal-with-custom-action.js"></script>
+</head>
+<body>
+   
+
+<div class="container-fluid p-5 bg-primary text-white text-center">
+  <h1>My First Bootstrap Page</h1>
+  <p>Resize this responsive page to see the effect!</p> 
+</div>
+  
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-sm-4">
+      <h3>Column 1</h3>
+      <button id="btn1">modal1</button>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+    </div>
+    <div class="col-sm-4">
+      <h3>Column 2</h3>
+      <button id="btn2">modal1</button>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+    </div>
+    <div class="col-sm-4">
+      <h3>Column 3</h3>        
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+    </div>
+  </div>
+</div>
+ <script>
+
+    var array1 = ["apple"];
+    var array2 = ["orange"];
+   
+
+   
+
+  //  getData();
+
+ // f1();
+  var test ='';
+  function f1(){
+ 
+   
+        $.getJSON("https://jsonplaceholder.typicode.com/users", function(data){
+          var employee_data = '';
+          $.each(data, function(key, value){
+            employee_data += '<tr>';
+            employee_data += '<td>'+value.name+'</td>';
+            employee_data += '<td>'+value.username+'</td>';
+            employee_data += '<td>'+value.email+'</td>';
+            employee_data += '<td>'+value.address+'</td>';
+            employee_data += '<td>'+value.geo+'</td>';
+            employee_data += '<td>'+value.phone+'</td>';
+            employee_data += '<td>'+value.website+'</td>';
+            employee_data += '<td>'+value.company+'</td>';
+            employee_data += '<tr>';
+          });
+         
+          
+          test += '<table class="table table-bordered table-striped" id="employee_table">'+employee_data+'</table>';
+
+         // alert(test);
+         // test = employee_data;
+         // return test;
+          // $('#employee_table').append(employee_data);
+          showModal('File Deletion',test, "Yes", "No", () => {
+    
+    
+
+            console.log('File deleted successfully');
+            
+        
+        });
+        });
+        
+        
+     }
+    
+    
+    
+    function f11(){
+        test += '<p>hello</p>';
+        return test;
+    }
+    //test += '<ul id="authors"></ul>';
+        // showModal(title, description, yesBtnLabel = 'Yes', noBtnLabel = 'Cancel', callbackAfterClickingYesBtn);
+document.getElementById('btn1').onclick = () => f1();
+
+
+  // showModal(title, description, yesBtnLabel = 'Yes', noBtnLabel = 'Cancel', callbackAfterClickingYesBtn);
+  document.getElementById('btn2').onclick = () => showModal('success', 'Do you want to delete this file?', "Yes", "No", () => {
+    console.log('File deleted successfully');
+});
+    </script>
+
+</body>
+</html>
